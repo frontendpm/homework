@@ -21,6 +21,10 @@ ul {
     a {
        color: #3f72af;
        text-decoration: none;
+       
+       &.active {
+        text-decoration: underline;
+       }
     }
 }
 `;
@@ -28,7 +32,7 @@ const Header = () => {
     return (
         <header>
             <Container>
-                <Row  className="align-items-md-center">
+                <Row className="align-items-md-center">
                     <Col xs={6} md={3}>
                         <img src={logo} alt="logo"/>
                     </Col>
@@ -36,10 +40,14 @@ const Header = () => {
                         <StyledNav>
                             <ul>
                                 <li>
-                                    <NavLink to={ROUTES_CONFIG.EDIT_PROFILE.path}>{ROUTES_CONFIG.EDIT_PROFILE.anchor}</NavLink>
+                                    <NavLink
+                                        exact
+                                        to={ROUTES_CONFIG.EDIT_PROFILE.path}>{ROUTES_CONFIG.EDIT_PROFILE.anchor}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={ROUTES_CONFIG.SHOW_PROFILE.path}>{ROUTES_CONFIG.SHOW_PROFILE.anchor}</NavLink>
+                                    <NavLink
+                                        exact
+                                        to={ROUTES_CONFIG.SHOW_PROFILE.path}>{ROUTES_CONFIG.SHOW_PROFILE.anchor}</NavLink>
                                 </li>
                             </ul>
                         </StyledNav>

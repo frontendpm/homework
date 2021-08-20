@@ -1,9 +1,10 @@
 import {useState} from "react";
 import {Col, Container, Row} from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import Form, {FormFooter} from "@atlaskit/form";
 import ButtonGroup from "@atlaskit/button/button-group";
+import PageHeader from '@atlaskit/page-header';
 import Button from "@atlaskit/button/standard-button";
-import LoadingButton from "@atlaskit/button/loading-button";
 import {PROFILE_FORM_CONFIG} from "../../utils/ProfileFormConfig";
 import * as FIELD_TYPES from "../../utils/FieldTypes";
 import Text from "../../components/Fields/Text";
@@ -11,11 +12,11 @@ import Textarea from "../../components/Fields/Textarea";
 import Datepicker from "../../components/Fields/Datepicker";
 import Avatarpicker from "../../components/Fields/Avatarpicker";
 
-const ProfileForm = ({formData, saveFormData}) => {
+const ProfileForm = ({formData, saveFormData, history}) => {
     const [imagePreviewSourceViaDataURIAPI, setImagePreviewSourceViaDataURIAPI] = useState(formData.avatar || '');
 
     const validateOnSubmit = (data) => {
-        let errors;
+        let errors = {};
         errors = requiredValidator(data, 'birthday', errors);
         return errors;
     };
@@ -32,8 +33,18 @@ const ProfileForm = ({formData, saveFormData}) => {
     };
 
     const formSubmit = (data) => {
-        saveFormData(data);
-        return validateOnSubmit(data);
+        const errors = validateOnSubmit(data);
+
+        console.log('errors:',errors);
+
+        if (Object.keys(errors).length) {
+            console.log("errors");
+        } else {
+            history.push("/profile");
+            saveFormData(data);
+        }
+
+        return errors;
     };
 
     const formChildren = () => PROFILE_FORM_CONFIG.map(field => {
@@ -69,10 +80,17 @@ const ProfileForm = ({formData, saveFormData}) => {
     return (
         <Container>
             <Row>
+                <Col>
+                    <PageHeader>
+                        Edit Profile Information
+                    </PageHeader>
+                </Col>
+            </Row>
+            <Row>
                 <Col md={{span: 6, offset: 3}}>
                     <Form
                         onSubmit={formSubmit}>
-                        {({formProps, submitting}) => (
+                        {({formProps}) => (
                             <form {...formProps}>
                                 {formChildren()}
 
@@ -86,13 +104,12 @@ const ProfileForm = ({formData, saveFormData}) => {
                                             }}>
                                             Reset
                                         </Button>
-                                        <LoadingButton
+                                        <Button
                                             type="submit"
                                             appearance="primary"
-                                            isLoading={submitting}
                                         >
                                             Sign up
-                                        </LoadingButton>
+                                        </Button>
                                     </ButtonGroup>
                                 </FormFooter>
                             </form>
@@ -104,4 +121,4 @@ const ProfileForm = ({formData, saveFormData}) => {
     );
 };
 
-export default ProfileForm;
+export default withRouter(ProfileForm);

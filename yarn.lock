@@ -182,6 +182,20 @@
     "@atlaskit/theme" "^11.3.0"
     "@babel/runtime" "^7.0.0"
 
+"@atlaskit/flag@^14.4.0":
+  version "14.4.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/flag/-/flag-14.4.0.tgz#16df4d0811728512b06b5b0f453ef870b42b048a"
+  integrity sha512-rCzxyfFPcxqJLgVCj9l4UlgHGCY90fVKbgBSVOqBAG4AIyILgwlOD3x31LfVrqI0I8A9ULQVisWNUIb6RlNfFQ==
+  dependencies:
+    "@atlaskit/analytics-next" "^8.0.0"
+    "@atlaskit/button" "^16.0.0"
+    "@atlaskit/icon" "^21.6.0"
+    "@atlaskit/motion" "^1.0.0"
+    "@atlaskit/portal" "^4.0.0"
+    "@atlaskit/theme" "^11.4.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/core" "^10.0.9"
+
 "@atlaskit/form@^8.2.4":
   version "8.2.4"
   resolved "https://registry.yarnpkg.com/@atlaskit/form/-/form-8.2.4.tgz#61ef9e75dd90df0d2a855e59fd9ae7aae8b57504"
@@ -208,6 +222,15 @@
   version "21.7.3"
   resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-21.7.3.tgz#81e04753000e58e804b910345f59c7e0f817421a"
   integrity sha512-mtTnQH6zyqIWHh1/0d4y07hfr0F6D7uOUr6wDqjeEyZD4jmeoBlcnLrIFtXjMd8BFDVkswusuQCqNQospFp1SQ==
+  dependencies:
+    "@atlaskit/theme" "^11.4.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/core" "^10.0.9"
+
+"@atlaskit/icon@^21.7.4":
+  version "21.7.4"
+  resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-21.7.4.tgz#ace74d54d7d02b3c07df6cad9ac1ebcb76882d8a"
+  integrity sha512-1rdKwSNCly45HMMYrOm9AjnoqtbJEbSN6VIKa22phKnsbb42Z0THoVaoIKYuXHGx+uvTvoViTUXS8bOZ4z6Qzw==
   dependencies:
     "@atlaskit/theme" "^11.4.0"
     "@babel/runtime" "^7.0.0"
@@ -360,6 +383,15 @@
   resolved "https://registry.yarnpkg.com/@atlaskit/motion/-/motion-1.0.2.tgz#dd30f2704db88eae482675399115dc110db45ecc"
   integrity sha512-FOU1OFx2v55x939baUWR4QhFYWbz2XZ9oe5RqG/aShCfxsPBfeAxtJHso1zAOkNNCcYmf4VYYp0zlH/42qDvzA==
   dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@emotion/core" "^10.0.9"
+
+"@atlaskit/page-header@^10.2.0":
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/page-header/-/page-header-10.2.0.tgz#781f35a0d9a03ea4bab29ee8126fe320474c308b"
+  integrity sha512-AoNwzeTNUfT3TULm1vNb2x6xRUtaUD+65uhx3SeEUOSnbQtyXZnPNjG2w6WXOX9IgSsDleCk0/06RpzgjYWHzA==
+  dependencies:
+    "@atlaskit/theme" "^11.4.0"
     "@babel/runtime" "^7.0.0"
     "@emotion/core" "^10.0.9"
 
