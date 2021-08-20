@@ -1,6 +1,6 @@
-import React, {Fragment, useState, useEffect, useRef} from "react";
+import {useState} from "react";
 import {Col, Container, Row} from "react-bootstrap";
-import Form, {ErrorMessage, Field, FormFooter, HelperMessage, ValidMessage} from "@atlaskit/form";
+import Form, {FormFooter} from "@atlaskit/form";
 import ButtonGroup from "@atlaskit/button/button-group";
 import Button from "@atlaskit/button/standard-button";
 import LoadingButton from "@atlaskit/button/loading-button";
@@ -10,9 +10,6 @@ import Text from "../../components/Fields/Text";
 import Textarea from "../../components/Fields/Textarea";
 import Datepicker from "../../components/Fields/Datepicker";
 import Avatarpicker from "../../components/Fields/Avatarpicker";
-
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const ProfileForm = ({formData, saveFormData}) => {
     const [imagePreviewSourceViaDataURIAPI, setImagePreviewSourceViaDataURIAPI] = useState(formData.avatar || '');
@@ -34,49 +31,50 @@ const ProfileForm = ({formData, saveFormData}) => {
         return errors;
     };
 
-    const formSubmit = async (data) => {
+    const formSubmit = (data) => {
         saveFormData(data);
-        return Promise.resolve(validateOnSubmit(data));
+        return validateOnSubmit(data);
     };
+
+    const formChildren = () => PROFILE_FORM_CONFIG.map(field => {
+        if (field.type === FIELD_TYPES.TEXTAREA) {
+            return <Textarea
+                key={field.name}
+                field={field}
+                defaultValue={formData[field.name] || ""}
+            />
+        } else if (field.type === FIELD_TYPES.DATEPICKER) {
+            return <Datepicker
+                key={field.name}
+                field={field}
+                defaultValue={formData[field.name] || ""}
+            />
+        }
+        if (field.type === FIELD_TYPES.AVATAR) {
+            return <Avatarpicker
+                key={field.name}
+                field={field}
+                defaultValue={imagePreviewSourceViaDataURIAPI || ""}
+                setUri={setImagePreviewSourceViaDataURIAPI}
+            />
+        } else {
+            return <Text
+                key={field.name}
+                field={field}
+                defaultValue={formData[field.name] || ""}
+            />
+        }
+    });
 
     return (
         <Container>
             <Row>
-                <Col md={3}/>
-                <Col md={6}>
+                <Col md={{span: 6, offset: 3}}>
                     <Form
                         onSubmit={formSubmit}>
                         {({formProps, submitting}) => (
                             <form {...formProps}>
-                                {PROFILE_FORM_CONFIG.map(field => {
-                                    if (field.type === FIELD_TYPES.TEXTAREA) {
-                                        return <Textarea
-                                            key={field.name}
-                                            field={field}
-                                            defaultValue={formData[field.name] || ""}
-                                        />
-                                    } else if (field.type === FIELD_TYPES.DATEPICKER) {
-                                        return <Datepicker
-                                            key={field.name}
-                                            field={field}
-                                            defaultValue={formData[field.name] || ""}
-                                        />
-                                    }
-                                    if (field.type === FIELD_TYPES.AVATAR) {
-                                        return <Avatarpicker
-                                            key={field.name}
-                                            field={field}
-                                            defaultValue={imagePreviewSourceViaDataURIAPI || ""}
-                                            setUri={setImagePreviewSourceViaDataURIAPI}
-                                        />
-                                    } else {
-                                        return <Text
-                                            key={field.name}
-                                            field={field}
-                                            defaultValue={formData[field.name] || ""}
-                                        />
-                                    }
-                                })}
+                                {formChildren()}
 
                                 <FormFooter>
                                     <ButtonGroup>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {Field, HelperMessage} from "@atlaskit/form";
 import Avatar from "@atlaskit/avatar";
 import Button from "@atlaskit/button/standard-button";

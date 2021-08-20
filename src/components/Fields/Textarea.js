@@ -1,4 +1,3 @@
-import React from "react";
 import {Field, HelperMessage} from "@atlaskit/form";
 import TextArea from '@atlaskit/textarea';
 

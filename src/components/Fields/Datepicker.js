@@ -1,4 +1,3 @@
-import React from "react";
 import {ErrorMessage, Field, HelperMessage} from "@atlaskit/form";
 import {DatePicker} from "@atlaskit/datetime-picker";
 

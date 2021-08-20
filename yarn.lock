@@ -453,6 +453,16 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/core" "^10.0.9"
 
+"@atlaskit/spinner@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/spinner/-/spinner-15.1.0.tgz#457a55aaabcba3868d74f145dd840fd869836866"
+  integrity sha512-jYA3mj+nSaD9VRF8xAQgpgmaGUiHNdSXYvB+XvE+kA9iZfOtPSVEP3+akvt4p4XmJZRo+LeBcE5c86Yot2NGyw==
+  dependencies:
+    "@atlaskit/theme" "^11.4.0"
+    "@atlaskit/tokens" "^0.1.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/core" "^10.0.9"
+
 "@atlaskit/textarea@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@atlaskit/textarea/-/textarea-4.1.2.tgz#0ed12a9a0b8090e81f04248fb9df54b73203e200"
@@ -487,6 +497,13 @@
   version "0.0.18"
   resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-0.0.18.tgz#4e5798659036190225f1b401a699cea6c0f0235a"
   integrity sha512-KeCCSSm5UXgcKnTOMN2N4KFcmAV/JG20YUbhuKZiVX6iv0GeO6d/aGAGX0PiaZoGVV1JiAlA11WMRiEQJWMLSg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+"@atlaskit/tokens@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tokens/-/tokens-0.1.0.tgz#9552be258372edfcb2031c60338b5987b7cf2788"
+  integrity sha512-D5nqI4jAbQYJwX1iVuGIa2Cr51QRrLL+hOhjMDEGj1nHkvgkIq0f24tAH8y5rUEW6/G7KGoDixHtvuw364Buug==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
