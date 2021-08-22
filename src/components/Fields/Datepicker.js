@@ -1,5 +1,6 @@
 import {ErrorMessage, Field, HelperMessage} from "@atlaskit/form";
 import {DatePicker} from "@atlaskit/datetime-picker";
+import {object, string} from "prop-types";
 
 const Datepicker = ({field, defaultValue}) => {
     return (
@@ -11,8 +12,7 @@ const Datepicker = ({field, defaultValue}) => {
         >
             {({fieldProps, error}) => (
                 <>
-                    <DatePicker {...fieldProps}
-                    />
+                    <DatePicker {...fieldProps}/>
                     {field.helperMessage ? (
                         <HelperMessage>
                             {field.helperMessage}
@@ -24,5 +24,12 @@ const Datepicker = ({field, defaultValue}) => {
         </Field>
     )
 };
+
+
+Datepicker.propTypes = {
+    field: object.isRequired,
+    defaultValue: string,
+};
+
 
 export default Datepicker;

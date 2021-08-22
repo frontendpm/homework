@@ -2,8 +2,8 @@ import {useState} from "react";
 
 import {Container, Row, Col} from 'react-bootstrap';
 import logo from '../../logo.svg';
-import Burger from "./Burger";
-import Navigation from "./Navigation";
+import Burger from "../../components/Navigation/Burger";
+import Navigation from "../../components/Navigation/Navigation";
 
 const Header = () => {
     const [open, setOpen] = useState(false);

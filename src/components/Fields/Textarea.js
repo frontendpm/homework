@@ -1,5 +1,6 @@
 import {Field, HelperMessage} from "@atlaskit/form";
 import TextArea from '@atlaskit/textarea';
+import {object, string} from "prop-types";
 
 const Textarea = ({field, defaultValue}) => {
     return (
@@ -11,8 +12,7 @@ const Textarea = ({field, defaultValue}) => {
         >
             {({fieldProps}) => (
                 <>
-                    <TextArea
-                        {...fieldProps} />
+                    <TextArea {...fieldProps}/>
                     {field.helperMessage ? (
                         <HelperMessage>
                             {field.helperMessage}
@@ -22,6 +22,11 @@ const Textarea = ({field, defaultValue}) => {
             )}
         </Field>
     )
+};
+
+Textarea.propTypes = {
+    field: object.isRequired,
+    defaultValue: string
 };
 
 export default Textarea;

@@ -2,28 +2,21 @@ import {NavLink} from "react-router-dom";
 import {ROUTES_CONFIG} from "../../utils/routes";
 import styled from "styled-components";
 import {useMediaPredicate} from "react-media-hook";
+import {bool, func, string} from "prop-types";
 
-
-const Navigation = ({open, setOpen, menuId}) => {
-    const isMobile = useMediaPredicate("(max-width: 767px)");
-
-    const isHidden = () => {
-        return isMobile ? !open : "false";
-    };
-
-    const StyledNav = styled.nav`
+const StyledNav = styled.nav`
     position: absolute;
     top: 100%;
     left:0;
     right:0;
     background: #fff;
-    display: ${({ open }) => open ? 'block' : 'none'};
+    display: ${({open}) => open ? 'block' : 'none'};
     
     @media screen and (min-width: 768px) {
         display: block;
         position: static;
     }
-
+    
     ul {
         list-style:none;
         margin:0;
@@ -33,7 +26,7 @@ const Navigation = ({open, setOpen, menuId}) => {
         align-items: middle;
         flex-direction: column;
         padding: 0 12px;
-    
+        
         @media screen and (min-width: 768px) {
             flex-direction: row;
             padding: 0;
@@ -41,7 +34,7 @@ const Navigation = ({open, setOpen, menuId}) => {
         
         li {
             text-align: right;
-    
+        
             @media screen and (min-width: 768px) {
                 margin-left: 10px;
             }
@@ -52,7 +45,7 @@ const Navigation = ({open, setOpen, menuId}) => {
            text-decoration: none;
            font-size: 24px;
            font-weight: bold;
-    
+        
             @media screen and (min-width: 768px) {
                 font-size: 18px;
                 font-weight: normal;
@@ -63,7 +56,14 @@ const Navigation = ({open, setOpen, menuId}) => {
            }
         }
     }
-    `;
+`;
+
+const Navigation = ({open, setOpen, menuId}) => {
+    const isMobile = useMediaPredicate("(max-width: 767px)");
+
+    const isHidden = () => {
+        return isMobile ? !open : "false";
+    };
 
     return <StyledNav aria-hidden={isHidden()} open={open} id={menuId}>
         <ul>
@@ -81,6 +81,12 @@ const Navigation = ({open, setOpen, menuId}) => {
             </li>
         </ul>
     </StyledNav>
+};
+
+Navigation.propTypes = {
+    open: bool.isRequired,
+    setOpen: func.isRequired,
+    menuId: string
 };
 
 export default Navigation;

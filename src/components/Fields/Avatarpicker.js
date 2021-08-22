@@ -5,6 +5,7 @@ import Button from "@atlaskit/button/standard-button";
 import {ModalTransition} from "@atlaskit/modal-dialog";
 import {AvatarPickerDialog} from "@atlaskit/media-avatar-picker";
 import styled from "styled-components";
+import {object, string, func} from "prop-types";
 
 const ActionContainer = styled.div`
   display: flex;
@@ -37,8 +38,9 @@ const Avatarpicker = ({field, defaultValue, setUri}) => {
                         <Avatar
                             size="xlarge"
                             src={defaultValue}/>
-                        <Button appearance="primary"
-                                onClick={() => setIsAvatarPickerOpen(true)}>
+                        <Button
+                            appearance="primary"
+                            onClick={() => setIsAvatarPickerOpen(true)}>
                             Choose Profile Image
                         </Button>
                         {field.helperMessage ? (
@@ -46,7 +48,6 @@ const Avatarpicker = ({field, defaultValue, setUri}) => {
                                 {field.helperMessage}
                             </HelperMessage>
                         ) : ''}
-
                     </ActionContainer>
                     <ModalTransition>
                         {isAvatarPickerOpen && (
@@ -68,6 +69,12 @@ const Avatarpicker = ({field, defaultValue, setUri}) => {
             )}
         </Field>
     )
+};
+
+Avatarpicker.propTypes = {
+    field: object.isRequired,
+    defaultValue: string,
+    setUri: func.isRequired
 };
 
 export default Avatarpicker;

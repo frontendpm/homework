@@ -1,9 +1,8 @@
 import {useState} from "react";
 import {Col, Container, Row} from "react-bootstrap";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import Form, {FormFooter} from "@atlaskit/form";
 import ButtonGroup from "@atlaskit/button/button-group";
-import PageHeader from '@atlaskit/page-header';
 import Button from "@atlaskit/button/standard-button";
 import {PROFILE_FORM_CONFIG} from "../../utils/profileFormConfig";
 import * as FIELD_TYPES from "../../utils/fieldTypes";
@@ -11,35 +10,33 @@ import Text from "../../components/Fields/Text";
 import Textarea from "../../components/Fields/Textarea";
 import Datepicker from "../../components/Fields/Datepicker";
 import Avatarpicker from "../../components/Fields/Avatarpicker";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import {object, func} from "prop-types";
 
 const ProfileForm = ({formData, saveFormData, history}) => {
     const [imagePreviewSourceViaDataURIAPI, setImagePreviewSourceViaDataURIAPI] = useState(formData.avatar || '');
 
-    const validateOnSubmit = (data) => {
-        let errors = {};
-        errors = requiredValidator(data, 'birthday', errors);
-        return errors;
+    const validateOnSubmit = (data) => requiredValidator(data, 'birthday');
+
+    const resetForm = () => {
+        saveFormData({});
+        setImagePreviewSourceViaDataURIAPI('');
     };
 
-    const requiredValidator = (data, key, errors) => {
+    const requiredValidator = (data, key) => {
         if (!data[key]) {
             return {
-                ...errors,
                 [key]: `no ${key} value selected, please select a value.`,
             };
         }
 
-        return errors;
+        return {};
     };
 
     const formSubmit = (data) => {
         const errors = validateOnSubmit(data);
 
-        console.log('errors:',errors);
-
-        if (Object.keys(errors).length) {
-            console.log("errors");
-        } else {
+        if (!Object.keys(errors).length) {
             history.push("/profile");
             saveFormData(data);
         }
@@ -82,9 +79,9 @@ const ProfileForm = ({formData, saveFormData, history}) => {
         <Container>
             <Row>
                 <Col>
-                    <PageHeader>
+                    <PageTitle>
                         Edit Profile Information
-                    </PageHeader>
+                    </PageTitle>
                 </Col>
             </Row>
             <Row>
@@ -94,15 +91,11 @@ const ProfileForm = ({formData, saveFormData, history}) => {
                         {({formProps}) => (
                             <form {...formProps}>
                                 {formChildren()}
-
                                 <FormFooter>
                                     <ButtonGroup>
                                         <Button
                                             appearance="subtle"
-                                            onClick={() => {
-                                                saveFormData({});
-                                                setImagePreviewSourceViaDataURIAPI('');
-                                            }}>
+                                            onClick={resetForm}>
                                             Reset
                                         </Button>
                                         <Button
@@ -120,6 +113,12 @@ const ProfileForm = ({formData, saveFormData, history}) => {
             </Row>
         </Container>
     );
+};
+
+ProfileForm.propTypes = {
+    formData: object.isRequired,
+    saveFormData: func.isRequired,
+    history: object.isRequired
 };
 
 export default withRouter(ProfileForm);

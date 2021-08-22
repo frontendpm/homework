@@ -16,6 +16,22 @@ import {
     Route
 } from "react-router-dom";
 
+const SpinnerWrapper = styled.div`
+    height: 60vh;
+    min-height: 350px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+`;
+
+const StyledMain = styled.main`
+    margin-bottom: 80px;
+    
+    @media screen and (max-width: 768px) {
+        margin-bottom: 40px;
+    }
+`;
+
 function App() {
     const [formData, setFormData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -50,26 +66,10 @@ function App() {
         setFlags(flags.slice(1));
     };
 
-    const SpinnerWrapper = styled.div`
-        height: 60vh;
-        min-height: 350px;
-        display: flex;
-        align-items:center;
-        justify-content: center;
-    `;
-
-    const MainStyled = styled.main`
-        margin-bottom: 80px;
-        
-        @media screen and (max-width: 768px) {
-            margin-bottom: 40px;
-        }
-    `;
-
     return (
         <Router>
             <Header/>
-            <MainStyled>
+            <StyledMain>
                 {isLoading ? <SpinnerWrapper>
                         <Spinner size="xlarge"/>
                     </SpinnerWrapper> :
@@ -82,7 +82,7 @@ function App() {
                         </Route>
                     </Switch>
                 }
-            </MainStyled>
+            </StyledMain>
             <FlagGroup onDismissed={handleDismiss}>
                 {flags.map((flagId) => {
                     return (

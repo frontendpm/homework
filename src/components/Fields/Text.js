@@ -1,9 +1,9 @@
 import TextField from "@atlaskit/textfield";
 import {Field, HelperMessage, ErrorMessage} from "@atlaskit/form";
 import {validation} from "../../utils/validation";
+import {object, string} from "prop-types";
 
 const Text = ({field, defaultValue}) => {
-
     return (
         <Field
             name={field.name}
@@ -27,6 +27,11 @@ const Text = ({field, defaultValue}) => {
             )}
         </Field>
     )
+};
+
+Text.propTypes = {
+    field: object.isRequired,
+    defaultValue: string
 };
 
 export default Text;
