@@ -1,3 +1,9 @@
+/*
+This component is inspired on
+https://github.com/maximakymenko/react-burger-menu-article-app
+@maximakymenko
+ */
+
 import {bool, func} from 'prop-types';
 import styled from 'styled-components';
 
