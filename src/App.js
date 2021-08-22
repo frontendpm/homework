@@ -38,9 +38,9 @@ function App() {
     const [flags, setFlags] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = () => {
             // const data = await getDataFromExternalApi(userId) // userId - needs to be provided to recognize the user
-            const data = await getParsedDataFromSessionStorage('formData');
+            const data = getParsedDataFromSessionStorage('formData');
             setFormData(data);
             setIsLoading(false);
         };

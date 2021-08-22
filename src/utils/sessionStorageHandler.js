@@ -1,7 +1,4 @@
-import {sleep} from "./sleep";
-
-export const getParsedDataFromSessionStorage = async (name) => {
-    await sleep(1000);
+export const getParsedDataFromSessionStorage =  (name) => {
     try {
         return JSON.parse(window.sessionStorage.getItem(name)) || {};
     } catch {
