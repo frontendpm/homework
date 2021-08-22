@@ -4,6 +4,7 @@ import Spinner from "@atlaskit/spinner";
 import {AutoDismissFlag, FlagGroup} from '@atlaskit/flag';
 import SuccessIcon from '@atlaskit/icon/glyph/check-circle';
 import Header from "./containers/Header/Header";
+import Footer from "./containers/Footer/Footer";
 import ProfileForm from "./containers/ProfileForm/ProfileForm";
 import Profile from "./containers/Profile/Profile";
 import {getParsedDataFromSessionStorage, saveDataToSessionStorage} from "./utils/sessionStorageHandler";
@@ -95,6 +96,7 @@ function App() {
                     );
                 })}
             </FlagGroup>
+            <Footer/>
         </Router>
     );
 }

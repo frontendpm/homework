@@ -1,15 +1,18 @@
 import TextField from "@atlaskit/textfield";
-import {Field, HelperMessage} from "@atlaskit/form";
+import {Field, HelperMessage, ErrorMessage} from "@atlaskit/form";
+import {validation} from "../../utils/validation";
 
 const Text = ({field, defaultValue}) => {
+
     return (
         <Field
             name={field.name}
             label={field.label}
             defaultValue={defaultValue}
             isRequired={field.isRequired}
+            validate={validation(field.validation)}
         >
-            {({fieldProps}) => (
+            {({fieldProps, error}) => (
                 <>
                     <TextField
                         type={field.type.toLowerCase()}
@@ -19,6 +22,7 @@ const Text = ({field, defaultValue}) => {
                             {field.helperMessage}
                         </HelperMessage>
                     ) : ''}
+                    {error && <ErrorMessage>{error}</ErrorMessage>}
                 </>
             )}
         </Field>
